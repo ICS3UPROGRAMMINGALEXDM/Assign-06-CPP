@@ -14,6 +14,7 @@
 #include <array>
 #include <iomanip>
 #include <string>
+#include <vector>
 #include <iostream>
 
 using std::cout;
@@ -93,6 +94,7 @@ list<string> FindSumPairs(list<int> ints, int numSum) {
     int counter1 = 0;
 
     list<string> nPairs;
+    list<string> returnPair;
     // first loop is to find what each element needs as a complement to
     // achieve the desired sum
     for (int aNum : ints) {
@@ -129,8 +131,11 @@ list<string> FindSumPairs(list<int> ints, int numSum) {
                     // remove it even though it wasn't already in the list. Ie.
                     // (5 + 5) is the inverse of (5 + 5) so they would both be
                     // removed.
-                    if (aPair == checkPair && aNum != number) {
+                    if (aPair == checkPair) {
                         nPairs.pop_back();
+                    }
+                    if (aNum == number) {
+                        nPairs.push_front(pair);
                     }
                     counter3 += 1;
                     int counter4 = 0;
@@ -145,8 +150,9 @@ list<string> FindSumPairs(list<int> ints, int numSum) {
                         }
                         // This will pop/remove the element if there is one just
                         // like it somewhere in the list before it
+
                         if (aPair == dPair) {
-                            nPairs.pop_back();
+                            nPairs.pop_front();
                         }
                     }
                 }
