@@ -216,7 +216,7 @@ void IndexFinder() {
             while (indexFailure) {
                 string uFind;
                 cout << "Enter the integer you are looking for: ";
-                cin >> uFind;
+                getline(cin, uFind);
                 try {
                     int find = stoi(uFind);
 
